@@ -1,12 +1,12 @@
 -- HACK: Disable NvChad LSP signature auto trigger
 local custom_group = vim.api.nvim_create_augroup("DisableLspSignature", { clear = false })
 
-vim.api.nvim_create_autocmd("InsertEnter", {
+vim.api.nvim_create_autocmd("LspAttach", {
   group = custom_group,
   callback = function()
-    vim.api.nvim_del_augroup_by_name "LspSignature"
-    -- commit suicide
-    vim.api.nvim_del_augroup_by_name "DisableLspSignature"
+    vim.defer_fn(function()
+      pcall(vim.api.nvim_del_augroup_by_name, "LspSignature")
+    end, 10)
   end,
 })
 
