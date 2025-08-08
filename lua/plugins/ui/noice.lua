@@ -1,3 +1,15 @@
+-- HACK: Disable NvChad LSP signature auto trigger
+local custom_group = vim.api.nvim_create_augroup("DisableLspSignature", { clear = false })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = custom_group,
+  callback = function()
+    vim.api.nvim_del_augroup_by_name "LspSignature"
+    -- commit suicide
+    vim.api.nvim_del_augroup_by_name "DisableLspSignature"
+  end,
+})
+
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
@@ -11,8 +23,8 @@ return {
       signature = {
         enabled = true,
         auto_open = {
-          enabled = false,
-          trigger = false,
+          enabled = true,
+          -- throttle = 100,
         },
       },
       hover = {
@@ -21,7 +33,7 @@ return {
       },
     },
     notify = {
-      enabled = false,
+      enabled = false, -- use snacks.nvim notifier instead
     },
     presets = {
       command_palette = true,
