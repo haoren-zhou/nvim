@@ -4,16 +4,29 @@ return {
   init = function()
     vim.g.vimtex_view_method = "zathura"
     vim.g.vimtex_compiler_method = "latexmk"
-    vim.g.vimtex_syntax_enabled = false
-    vim.g.vimtex_imaps_enabled = false
-
-    vim.g.vimtex_mappings_enabled = false
+    -- vim.g.vimtex_syntax_enabled = false
+    vim.g.vimtex_quickfix_mode = 0
+    vim.g.tex_flavor = "latex"
+    vim.g.tex_conceal = "abdmg"
+    vim.g.vimtex_imaps_enabled = true
+    vim.g.vimtex_mappings_enabled = true
 
     local augroup = vim.api.nvim_create_augroup("vimtexConfig", {})
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+      pattern = "tex",
+      group = augroup,
+      callback = function()
+        vim.defer_fn(function()
+          vim.cmd "TSBufDisable highlight"
+        end, 10)
+      end,
+    })
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "tex",
       group = augroup,
       callback = function(event)
+        vim.opt_local.conceallevel = 1
+
         local wk = require "which-key"
         wk.add {
           buffer = event.buf,
