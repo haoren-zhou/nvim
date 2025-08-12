@@ -60,10 +60,6 @@ local function make_fraction_from_line(text)
   local before = text:sub(1, i_pos - 1) -- text before '('
   local inside = text:sub(i_pos + 1) -- text inside parentheses
 
-  if inside:sub(-1) == ")" then
-    inside = inside:sub(1, -2)
-  end
-
   return before .. "\\frac{" .. inside .. "}{"
 end
 
