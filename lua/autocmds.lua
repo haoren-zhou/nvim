@@ -45,9 +45,21 @@ autocmd({ "QuitPre" }, {
   end,
 })
 
-autocmd("QuickFixCmdPost", {
-  desc = "Automatically open Trouble quickfix",
-  callback = function()
-    vim.cmd [[Trouble qflist open]]
+-- autocmd("QuickFixCmdPost", {
+--   desc = "Automatically open Trouble quickfix",
+--   callback = function()
+--     vim.cmd [[Trouble qflist open]]
+--   end,
+-- })
+
+-- WARN: testing to see if this screws up anything
+autocmd("BufRead", {
+  callback = function(ev)
+    if vim.bo[ev.buf].buftype == "quickfix" then
+      vim.schedule(function()
+        vim.cmd [[cclose]]
+        vim.cmd [[Trouble qflist open]]
+      end)
+    end
   end,
 })

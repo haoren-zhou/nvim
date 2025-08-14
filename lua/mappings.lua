@@ -6,7 +6,7 @@ local map = vim.keymap.set
 local wk = require "which-key"
 
 -- common --
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map({ "n", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "Save current buffer" })
 map("n", "<C-u>", function()
@@ -71,6 +71,7 @@ wk.add {
 
 -- telescope --
 map("n", "<leader>fs", require("telescope.builtin").lsp_document_symbols, { desc = "telescope document symbols" })
+map("n", "grr", require("telescope.builtin").lsp_references, { desc = "telescope lsp references" })
 
 -- treesitter-context --
 -- map("n", "[c", function()
