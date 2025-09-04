@@ -15,6 +15,7 @@ local options = {
     nix = { "alejandra" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     tex = { "tex-fmt" },
+    ocaml = { "ocamlformat" },
   },
 
   -- format_on_save = {

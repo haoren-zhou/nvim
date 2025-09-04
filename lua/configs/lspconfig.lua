@@ -11,6 +11,7 @@ local servers = {
   docker_compose_language_service = {},
   dockerls = {},
   clangd = {},
+  -- ccls = {},
   cmake = {},
   basedpyright = {
     settings = {
@@ -24,6 +25,7 @@ local servers = {
   },
   marksman = {},
   texlab = {},
+  ocamllsp = {},
 }
 
 for name, opts in pairs(servers) do
