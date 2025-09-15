@@ -16,6 +16,7 @@ local options = {
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     tex = { "tex-fmt" },
     ocaml = { "ocamlformat" },
+    java = { "google-java-format" },
   },
 
   -- format_on_save = {

@@ -12,6 +12,7 @@ return {
         "gitignore",
         "html",
         "htmldjango",
+        "java",
         "javascript",
         "json",
         "latex",
