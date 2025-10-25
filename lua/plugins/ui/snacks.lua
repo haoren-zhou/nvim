@@ -20,5 +20,14 @@ return {
         return true
       end,
     },
+    image = {
+      enabled = true,
+      math = {
+        enabled = true,
+        latex = {
+          font_size = "normalsize",
+        },
+      },
+    },
   },
 }

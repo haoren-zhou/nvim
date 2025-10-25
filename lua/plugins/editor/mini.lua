@@ -11,7 +11,7 @@ local mini_modules = {}
 
 for _, mod in ipairs(module_names) do
   table.insert(mini_modules, {
-    "echasnovski/" .. mod.name,
+    "nvim-mini/" .. mod.name,
     event = "VeryLazy",
     version = false,
     opts = mod.opts or {},
