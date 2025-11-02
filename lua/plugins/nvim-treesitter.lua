@@ -20,6 +20,7 @@ return {
         "markdown",
         "markdown_inline",
         "nix",
+        "ocaml",
         "python",
         "regex",
         "requirements",
